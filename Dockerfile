@@ -1,4 +1,6 @@
 FROM python:3.7
+FROM julia:latest
+
 
 MAINTAINER Kirill Vlasov <vlasoff.k@gmail.com>
 
@@ -18,6 +20,14 @@ RUN pip3 install --upgrade pip
 ADD requirements.txt /var/tmp/requirements.txt
 RUN python3 -m pip install -r /var/tmp/requirements.txt
 
+RUN apt-get update && apt-get install -y \
+    make cmake gcc libzmq3-dev bzip2 hdf5-tools unzip sudo
+
+# Install conda, jupyter, and IJulia kernel
+RUN julia -e 'Pkg.update(); Pkg.add("IJulia")'
+
+# Install some common packages (that I've randomly chosen based on my own usage...)
+RUN julia -e 'for p in ["HDF5","JSON","OAuth","Requests","PyCall","PyPlot","TimeZones","ParallelDataTransfer"]; Pkg.add(p); end'
 
 
 RUN jupyter notebook --allow-root --generate-config -y
