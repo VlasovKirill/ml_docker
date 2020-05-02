@@ -1,7 +1,6 @@
-FROM python:3.7
-
-
+FROM python:latest
 MAINTAINER Kirill Vlasov <vlasoff.k@gmail.com>
+
 
 RUN apt-get update && yes|apt-get upgrade
 RUN apt-get install -y wget bzip2
