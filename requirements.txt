@@ -25,6 +25,7 @@ gensim
 pystan
 statsmodels
 xlrd
+xlwt
 yargy
 ipymarkup
 sqlalchemy
