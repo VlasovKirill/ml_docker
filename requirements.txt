@@ -29,3 +29,4 @@ xlwt
 yargy
 ipymarkup
 sqlalchemy
+psycopg2
