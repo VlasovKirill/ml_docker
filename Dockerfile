@@ -89,7 +89,7 @@ RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("IJulia")'
 
 
 RUN jupyter notebook --allow-root --generate-config -y
-RUN echo "c.NotebookApp.password = 'meow'" >> ~/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.password = u'sha1:7d5c2a2d6136fbf166211d5183bf66214a247f31'" >> ~/.jupyter/jupyter_notebook_config.py
 RUN echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
 #RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
