@@ -108,7 +108,6 @@ RUN mkdir -p /home/user && \
 WORKDIR /home/user
 EXPOSE 22 4545
 
-ENTRYPOINT ["python3", "password_generation.py"]
 
 ENTRYPOINT ["/entry-point.sh"]
 
