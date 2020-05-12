@@ -89,12 +89,12 @@ RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("IJulia")'
 
 
 RUN jupyter notebook --allow-root --generate-config -y
-RUN echo "c.NotebookApp.password = 'sha1:762ccbff0163:28d16fa209ddf400727a6fa7c39b6397628c9484'" >> ~/.jupyter/jupyter_notebook_config.py
-RUN echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
+#RUN echo "c.NotebookApp.password = ''" >> ~/.jupyter/jupyter_notebook_config.py
+#RUN echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
 #RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 COPY entry-point.sh /
-
+COPY password_generation.py /
 
 # Final setup: directories, permissions, ssh login, symlinks, etc
 RUN mkdir -p /home/user && \
@@ -107,6 +107,8 @@ RUN mkdir -p /home/user && \
 
 WORKDIR /home/user
 EXPOSE 22 4545
+
+ENTRYPOINT ["python3", "password_generation.py"]
 
 ENTRYPOINT ["/entry-point.sh"]
 
