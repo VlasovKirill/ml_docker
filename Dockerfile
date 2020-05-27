@@ -94,7 +94,7 @@ RUN echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
 RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 COPY entry-point.sh /
-COPY password_generation.py /
+#COPY password_generation.py /
 
 # Final setup: directories, permissions, ssh login, symlinks, etc
 RUN mkdir -p /home/user && \

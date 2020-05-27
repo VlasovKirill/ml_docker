@@ -30,3 +30,4 @@ yargy
 ipymarkup
 sqlalchemy
 psycopg2
+lightgbm
